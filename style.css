@@ -1,0 +1,196 @@
+/* ==========================================
+   Gesture Launcher Stylesheet (style.css)
+   Aesthetic: Premium, Ultra-Minimal, Futuristic
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000000;
+  font-family: 'Space Grotesk', 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #ffffff;
+  user-select: none;
+}
+
+/* Fullscreen drawing canvas */
+#drawing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: block;
+}
+
+/* Centered HUD Overlay Container */
+.hud-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none; /* Let pointer events pass to canvas */
+}
+
+/* Startup and status screens */
+.status-screen, .feedback-screen, .error-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Futuristic pulsing text for initialization */
+.message-glow {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+/* Sub-message styling */
+.sub-message {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 15px;
+  text-shadow: none;
+  animation: subtle-fade 3s infinite ease-in-out;
+}
+
+/* Checkmark indicator for Camera Ready */
+.checkmark {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-right: 8px;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+/* Large glowing white letter in center */
+.glowing-letter {
+  font-size: 12rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  line-height: 1;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 
+    0 0 15px #ffffff,
+    0 0 30px #ffffff,
+    0 0 60px #ffffff,
+    0 0 120px rgba(255, 255, 255, 0.5);
+  animation: letter-zoom-in 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Redirecting text underneath recognized letter */
+.redirect-text {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  opacity: 0.9;
+}
+
+/* Error message screen */
+.error-screen {
+  color: #ff3b30;
+}
+
+.error-icon {
+  font-size: 4rem;
+  font-weight: 600;
+  color: #ff3b30;
+  border: 3px solid #ff3b30;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(255, 59, 48, 0.3);
+  animation: shake 0.5s ease-in-out;
+}
+
+.error-text {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(255, 59, 48, 0.4);
+}
+
+.error-subtext {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 400px;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.5;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    opacity: 0.5;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes subtle-fade {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes letter-zoom-in {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}

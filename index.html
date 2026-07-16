@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gesture Launcher</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Futuristic black-screen gesture launcher. Write letters in the air to open WhatsApp, Spotify, YouTube, Instagram, and Gmail using MediaPipe Hand Tracking.">
+  <meta name="keywords" content="Gesture, Launcher, MediaPipe, Hand Tracking, Computer Vision, JavaScript, AI, Web App">
+  <meta name="author" content="Antigravity">
+  
+  <!-- Google Fonts - Space Grotesk & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- MediaPipe Hands CDN Stable version -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Hidden webcam source element for MediaPipe tracking -->
+  <video id="webcam" autoplay playsinline style="display: none;"></video>
+  
+  <!-- Main Interactive Canvas -->
+  <canvas id="drawing-canvas"></canvas>
+  
+  <!-- Premium UI HUD HUD/Overlay -->
+  <div id="hud-overlay" class="hud-container">
+    
+    <!-- Startup/Ready Status Screen -->
+    <div id="status-container" class="status-screen">
+      <div id="startup-message" class="message-glow">Initializing Camera...</div>
+      <div id="ready-message" class="message-glow hidden">
+        <span class="checkmark">✓</span> Camera Ready
+        <div class="sub-message">Draw a Letter (W, S, Y, I, G)</div>
+      </div>
+    </div>
+    
+    <!-- Recognition Results Overlay -->
+    <div id="recognition-feedback" class="feedback-screen hidden">
+      <div id="recognized-letter" class="glowing-letter">W</div>
+      <div id="redirect-message" class="redirect-text">Opening WhatsApp...</div>
+    </div>
+    
+    <!-- Error Screen (e.g. No Camera, No Permission) -->
+    <div id="error-screen" class="error-screen hidden">
+      <div class="error-icon">!</div>
+      <div id="error-message" class="error-text">Camera Permission Required</div>
+      <div class="error-subtext">Please enable webcam access in your browser settings to draw in the air.</div>
+    </div>
+    
+  </div>
+  
+  <!-- Main Logic -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
