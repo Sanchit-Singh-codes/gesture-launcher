@@ -1,0 +1,14 @@
+{
+  "name": "gesture-launcher",
+  "version": "1.0.0",
+  "description": "Futuristic black-screen gesture launcher using index finger tracking",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve .",
+    "start": "serve .",
+    "build": "mkdir -p dist && cp index.html style.css script.js recognizer.js templates.js dist/ 2>/dev/null || (xcopy index.html dist\\ /y && xcopy style.css dist\\ /y && xcopy script.js dist\\ /y && xcopy recognizer.js dist\\ /y && xcopy templates.js dist\\ /y)"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}
